@@ -1,7 +1,14 @@
-/* App.css */
+/* Task.css */
+body {
+  background-color: burlywood;
+}
+input {
+  display: block;
+  margin: 10px;
+}
 .layout-container {
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .sidebar {
@@ -33,4 +40,365 @@
   flex-grow: 1;
   background: #f4f4f4;
   padding: 20px;
+}
+
+.menu-list {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  padding: 10px 15px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s;
+}
+
+/* This is the highlight style */
+li.active {
+  background-color: #007bff; /* Blue background */
+  color: white; /* White text */
+  font-weight: bold;
+}
+.dropdown-container {
+  position: relative; /* Essential for positioning the menu below the button */
+  display: inline-block;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%; /* Position right below the button */
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-width: 150px;
+  z-index: 1000;
+}
+
+.dropdown-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-menu li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdown-menu li:hover {
+  background-color: #f4f4f4;
+}
+.tooltip-container {
+  position: relative; /* Crucial: Positions the bubble relative to this container */
+  display: inline-block; /* Keeps the container width tight to the child element */
+}
+
+.tooltip-bubble {
+  position: absolute;
+  bottom: 125%; /* Position above the container (100% height + a little gap) */
+  left: 100%; /* Start from the middle */
+  transform: translateX(
+    -50%
+  ); /* Shift left by half its own width to perfectly center it */
+
+  /* Appearance styling */
+  background-color: #333;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  white-space: nowrap; /* Prevents text from wrapping */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+
+  /* Optional: Add a small arrow pointing down to the element */
+}
+
+/* Optional CSS for the arrow pointer */
+.tooltip-bubble::after {
+  content: "";
+  position: absolute;
+  top: 100%; /* At the bottom edge of the bubble */
+  left: 50%;
+  margin-left: -5px; /* Centers the arrow */
+  border-width: 5px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+}
+.accordion-container {
+  width: 100%;
+  max-width: 500px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.accordion-header {
+  padding: 15px;
+  background-color: #f7f7f7;
+  cursor: pointer;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.accordion-header:hover {
+  background-color: #eaeaea;
+}
+
+/* Style when the header belongs to the active item */
+.accordion-item:has(.accordion-content) .accordion-header {
+  background-color: #e9e9e9;
+  font-weight: bold;
+}
+
+.toggle-icon {
+  font-size: 1.2rem;
+}
+
+.accordion-content {
+  padding: 15px;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+  /* Optional: Add smooth transition for height */
+  overflow: hidden;
+}
+.modal-overlay {
+  /* Position fixed covers the entire viewport */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  z-index: 1001;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.modal-title {
+  margin: 0;
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.modal-body {
+  padding-top: 15px;
+}
+/* Task.css Additions for Task 9 */
+.sticky-header {
+  position: sticky; /* Makes the element stick to the top of the viewport */
+  top: 0; /* Defines the offset from the top when it sticks */
+
+  /* Default styles */
+  background-color: transparent;
+  padding: 20px;
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease,
+    padding 0.3s ease;
+  z-index: 100; /* Ensure it stays above other content */
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Styles applied when the user scrolls (when 'scrolled' class is active) */
+.sticky-header.scrolled {
+  background-color: #007bff; /* Change background color */
+  color: white; /* Change text color */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a shadow */
+  padding: 10px 20px; /* Make header slightly smaller */
+}
+
+.sticky-header nav a {
+  margin-left: 15px;
+  color: inherit; /* Inherit color from the header state */
+  text-decoration: none;
+}
+/* Task.css Additions for Task 10 */
+.back-to-top-btn {
+  position: fixed; /* Keep the button in the same spot on the screen */
+  bottom: 20px; /* 20px from the bottom */
+  right: 20px; /* 20px from the right */
+
+  /* Appearance styles */
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 50%; /* Makes it a circle */
+  width: 50px;
+  height: 50px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 500;
+  transition: opacity 0.3s;
+}
+
+.back-to-top-btn:hover {
+  background-color: #0056b3;
+}
+/* Task.css Additions for Task 11 */
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar-toggle {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+  /* Hide by default on desktop, show only on mobile */
+  display: none;
+}
+
+.navbar-links a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  transition: color 0.3s;
+}
+
+.navbar-links a:hover {
+  color: #007bff;
+}
+
+/* --- Mobile Styles (Default view below 768px) --- */
+
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-wrap: wrap; /* Allows items to wrap onto a new line */
+  }
+
+  .navbar-toggle {
+    display: block; /* Show the hamburger button */
+  }
+
+  .navbar-links {
+    width: 100%;
+    display: none; /* Hide links by default */
+    flex-direction: column;
+    background-color: #444;
+    padding: 10px 0;
+    margin-top: 10px;
+  }
+
+  .navbar-links.open {
+    display: flex; /* Show links when the 'open' class is applied via React state */
+  }
+
+  .navbar-links a {
+    margin: 10px 20px;
+  }
+}
+/* Task.css Additions for Task 12 */
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin-top: 20px;
+}
+
+.form-container label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-input {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box; /* Ensures padding/border are included in width calculation */
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* This is the key styling rule for focus */
+.form-input:focus {
+  outline: none; /* Removes the default browser outline */
+  border-color: #007bff; /* Change border color to blue */
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Add a glowing effect */
+  background-color: #f9f9f9; /* Slightly change background */
+}
+/* Task.css Additions for Task 13 */
+.helper-text {
+  margin-top: -10px; /* Pull it closer to the input field above it */
+  margin-bottom: 15px;
+  font-size: 0.85rem;
+  color: #555;
+  padding-left: 5px;
+  border-left: 3px solid #007bff; /* Add a little visual marker */
+  background-color: #e9ecef;
+  padding: 5px 10px;
+  border-radius: 0 4px 4px 0;
+}
+/* Task.css Additions for Task 14 */
+.strength-indicator {
+  height: 8px;
+  background-color: #eee;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: -10px; /* Adjust spacing */
+  margin-bottom: 5px;
+}
+
+.strength-bar {
+  height: 100%;
+  transition: width 0.3s ease-in-out;
+}
+
+.strength-text {
+  font-size: 0.85rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+/* Target the class added to the table rows */
+.table-row-hoverable:hover {
+  background-color: #f5f5f5; /* Change background color on hover */
+  cursor: pointer; /* Optional: changes cursor to indicate interactivity */
+  transition: background-color 0.2s ease; /* Optional: smooth transition */
 }
