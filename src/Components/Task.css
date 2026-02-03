@@ -1,0 +1,36 @@
+/* App.css */
+.layout-container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  background: #333;
+  color: white;
+  transition: width 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.sidebar.open {
+  width: 250px;
+}
+
+.sidebar.closed {
+  width: 60px; /* Collapsed width to show only icons or button */
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.main-content {
+  flex-grow: 1;
+  background: #f4f4f4;
+  padding: 20px;
+}
